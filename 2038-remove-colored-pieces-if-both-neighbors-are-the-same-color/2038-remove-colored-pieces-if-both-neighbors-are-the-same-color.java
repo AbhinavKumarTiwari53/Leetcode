@@ -1,17 +1,18 @@
 class Solution {
-    public boolean winnerOfGame(String s) {
-        
-        int a = 0, b = 0;
-        
-        for(int i=1; i<s.length()-1; i++){
-            if(s.charAt(i) == s.charAt(i-1) && s.charAt(i) == s.charAt(i+1)){
-                if(s.charAt(i) == 'A')
-                    a++;
-                else
-                    b++;
-			}
+    public boolean winnerOfGame(String colors) {
+    int x = 0, y=0, a=0, b=0;
+    for(char c:colors.toCharArray()){
+        if(c == 'A'){
+            x++;
+            y=0;
         }
-                    
-        return a>b;
+        else {
+            y++;
+            x=0;
+        }
+        if(x>=3) a++;
+        if(y>=3) b++;
+    }
+    return a>b;
     }
 }
