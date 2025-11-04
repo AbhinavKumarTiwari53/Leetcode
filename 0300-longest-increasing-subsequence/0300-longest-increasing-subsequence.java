@@ -1,18 +1,20 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        int n=nums.length;
-        Integer dp[][] = new Integer[n+2][n+2];
-        return solve(nums,0,-1,dp);
-    }
-    int solve(int[] nums, int i,int j, Integer dp[][]){
-        if(i==nums.length) return 0;
-        if(dp[i][j+1]!=null) return dp[i][j+1];
-        int exclude=solve(nums,i+1,j,dp);
-        int include=0;
-        if(j==-1 || nums[i]>nums[j]){
-            include=1+solve(nums,i+1,i,dp);
+        int m[]=new int[nums.length];
+        Arrays.fill(m,1);
+        for(int i=1;i<nums.length;i++){
+            for(int j=0;j<i;j++){
+                if(nums[j]<nums[i]) {
+                    if(m[j]+1>m[i]){
+                        m[i]=m[j]+1;
+                    }
+                }
+            }
         }
-        dp[i][j+1]=Math.max(include,exclude);
-        return dp[i][j+1];
+        int max=-1;
+        for(int i=0;i<nums.length;i++){
+            if(m[i]>max) max=m[i];
+        }
+        return max;
     }
 }
