@@ -1,18 +1,18 @@
 class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
-        int n = image.length, m = image[0].length;
-        int prev = image[sr][sc];
-        if(prev == color) return image;
-        help(image, n, m, sr, sc, prev, color);
+        int n=image.length, m=image[0].length;
+        int prev=image[sr][sc];
+        if(prev==color) return image;
+        help(image, prev, color, sr, sc, n, m);
         return image;
     }
-    public void help(int[][] image, int n, int m, int sr, int sc, int prev, int color){
-        if(sr < 0 || sc < 0 || sr >= n || sc >= m || prev != image[sr][sc]) return;
-        image[sr][sc] = color;
-        int[] dr = {0,1,0,-1};
-        int[] dc = {1, 0, -1, 0};
-        for(int i =0  ; i<4; i++){
-            help(image, n, m, sr+dr[i], sc+dc[i], prev, color);
-        }
+    void help(int[][] img, int prev, int c, int sr, int sc, int n, int m){
+        if(sr==n || sc==m || sr<0 || sc<0 || img[sr][sc]!=prev) return;
+        img[sr][sc]=c;
+        int[] dr={0,1,-1,0};
+        int[] dc={-1,0,0,1};
+        for(int i=0;i<4;i++){
+            help(img, prev, c, sr+dr[i], sc+dc[i], n, m);
+        } 
     }
 }
