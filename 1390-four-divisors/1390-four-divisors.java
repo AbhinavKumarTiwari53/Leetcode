@@ -4,7 +4,7 @@ class Solution {
         for(int i:nums) {
             int c=0;
             int sum=0;
-            for(int j=1;j<=Math.sqrt(i);j++){
+            for(int j=1;j*j<=i;j++){
                 if(i%j==0) {
                     c++;
                     sum+=j;
