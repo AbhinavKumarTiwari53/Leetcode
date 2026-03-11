@@ -10,7 +10,7 @@ class Solution {
                 if(j>i+1 && nums[j]==nums[j-1]) continue;
                 int s=j+1, e=n-1;
                 while(s<e){
-                    int sum=nums[i]+nums[j]+nums[s]+nums[e];
+                    long sum=(long)nums[i]+nums[j]+nums[s]+nums[e];
                     if(sum==target){
                         li.add(new ArrayList<>(Arrays.asList(nums[i],nums[j],nums[s],nums[e])));
                         while(s<e && nums[s]==nums[s+1]) s++;
