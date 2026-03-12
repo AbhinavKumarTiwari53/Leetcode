@@ -24,6 +24,6 @@ class Solution {
         int l=Math.max(0,dfs(root.left));
         int r=Math.max(0,dfs(root.right));
         ans=Math.max(ans,l+r+root.val);
-        return Math.max(r,l) + root.val;
+        return Math.max(l,r)+root.val;
     }
 }
