@@ -2,12 +2,10 @@ class Solution {
     public int networkDelayTime(int[][] times, int n, int K) {
         int[][] graph = new int[n][n];
         for(int i = 0; i < n ; i++) Arrays.fill(graph[i], Integer.MAX_VALUE);
-        for( int[] rows : times) graph[rows[0] - 1][rows[1] - 1] =  rows[2];        
-        
+        for( int[] rows : times) graph[rows[0] - 1][rows[1] - 1] =  rows[2];
         int[] distance = new int[n];
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[K - 1] = 0;
-        
         boolean[] visited = new boolean[n];
         for(int i = 0; i < n ; i++){
             int v = minIndex(distance, visited);
@@ -27,7 +25,6 @@ class Solution {
         }
         return result;
     }
-	
     private int minIndex(int[] distance, boolean[] visited){
         int min = Integer.MAX_VALUE, minIndex = -1;
         for(int i = 0; i < distance.length; i++){
