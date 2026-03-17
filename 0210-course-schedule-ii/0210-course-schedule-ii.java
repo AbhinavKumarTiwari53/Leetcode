@@ -2,7 +2,7 @@ class Solution {
     public int[] findOrder(int n, int[][] prerequisites) {
         List<Integer>[] adj = new List[n];
         int[] indegree = new int[n];
-        List<Integer> ans = new ArrayList<>();
+        int[] ans = new int[n];
 
         for (int[] pair : prerequisites) {
             int course = pair[0];
@@ -20,10 +20,10 @@ class Solution {
                 queue.offer(i);
             }
         }
-
+        int i=0;
         while (!queue.isEmpty()) {
             int current = queue.poll();
-            ans.add(current);
+            ans[i++]=current;
 
             if (adj[current] != null) {
                 for (int next : adj[current]) {
@@ -34,9 +34,7 @@ class Solution {
                 }
             }
         }
-        int[] res=new int[ans.size()];
-        if(ans.size()!=n) return new int[]{};
-        for(int i=0;i<ans.size();i++) res[i]=ans.get(i); 
-        return res;
+        if(i!=n) return new int[0];
+        return ans;
     }
 }
