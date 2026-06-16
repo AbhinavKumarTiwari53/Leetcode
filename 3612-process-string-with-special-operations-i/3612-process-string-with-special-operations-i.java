@@ -8,7 +8,7 @@ class Solution {
             else if(ch=='*' && sb.length()>0)  sb.deleteCharAt(sb.length()-1);
             else if(ch=='%')  sb.reverse();
             else {
-                sb.append(sb);
+                sb.append(sb.toString());
             }
         }
         return sb.toString();
